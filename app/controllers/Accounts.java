@@ -12,5 +12,9 @@ public class Accounts extends Controller {
 	public static void index() {
 		render();
 	}
+	
+	public static void signin() {
+		render();
+	}
 
 }
