@@ -15,9 +15,9 @@ public class User extends Model {
 	public String lastName;
 	public String email;
 	public String password;
-	
-	@OneToMany(mappedBy = "from", cascade = CascadeType.ALL)
-	List<Post> posts = new ArrayList<Post>();
+
+	@OneToMany(cascade=CascadeType.ALL)
+	public List<Post> posts;
 
 	public User(String firstName, String lastName, String email, String password) {
 		this.firstName = firstName;
@@ -32,6 +32,10 @@ public class User extends Model {
 
 	public boolean checkPassword(String password) {
 		return this.password.equals(password);
+	}
+
+	public void submitPost(Post post) {
+		posts.add(post);
 	}
 
 }

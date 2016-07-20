@@ -8,7 +8,8 @@ import models.*;
 public class Accounts extends Controller {
 
 	public static void index() {
-		render();
+		User user = Accounts.getCurrentUser();
+		render(user);
 	}
 
 	public static void register(User user) {
@@ -17,7 +18,8 @@ public class Accounts extends Controller {
 	}
 
 	public static void signin() {
-		render();
+		User user = Accounts.getCurrentUser();
+		render(user);
 	}
 
 	public static void signout() {
@@ -42,7 +44,7 @@ public class Accounts extends Controller {
 		if ((user != null) && (user.checkPassword(password) == true)) {
 			Logger.info("Authentication successful");
 			session.put("logged_in_userid", user.id);
-			index();
+			Blog.index();
 		} else {
 			Logger.info("Authentication failed");
 			signin();

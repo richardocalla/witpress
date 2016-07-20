@@ -1,0 +1,40 @@
+#{extends 'main.html' /} #{set title:'Submit a Blog Post' /}
+
+<nav class="ui inverted menu">
+	<a class="ui item" href="/">Sign Up</a> <a class="ui item"
+		href="/signin">Sign In</a> <a class="ui active item" href="/blog">Blog</a>
+	<a class="ui item" href="/signout">Sign Out</a>
+</nav>
+
+<section class="ui two column segment">
+	<form action="/blog/addpost" method="POST">
+		<div class="ui two column grid">
+			<div class="column">
+				<div class="ui fluid form segment">
+					<div class="ui input field">
+						<input placeholder="Choose a title for post" name="title"
+							type="text">
+					</div>
+					<div class="ui input field">
+						<input placeholder="Write your post here" name="content"
+							type="text" style="height: 200px">
+					</div>
+					<div class="ui form">
+						<button type="submit" class="ui green submit button">Submit
+							New Post</button>
+					</div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="ui fluid form segment">
+					<div class="field">
+						#{list items:reversePosts, as:'post'} ${post.title} #{/list}
+						<div class="ui form">
+							<button class="mini ui orange button">Delete</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</section>
