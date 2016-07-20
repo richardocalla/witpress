@@ -7,31 +7,28 @@
 </nav>
 
 <section class="ui segment">
-	<form action="/submitcomment" method="POST">
 		<div class="column">
 			<div class="ui fluid form segment">
-				<p>
-					<strong>The state of rugby.</strong>
-				</p>
-				<p>The less said the better.:</p>
-				<p>
-					<strong>Comments:</strong>
-				</p>
-				<p>Up Kilkenny.:</p>
-				<button type="submit" class="tiny ui orange submit button">Delete</button>
-				<p>Up Waterford.:</p>
-				<button type="submit" class="tiny ui orange submit button">Delete</button>
+				<h2>${post.title}</h2>
+					<p>${post.content}</p>
+					<p>
+						<strong>Comments:</strong>
+					</p>
+					#{list items:post.comments, as:'comment'}
+					<p>${comment.content}</p>
+					<div class="mini ui orange button">Delete</div>
+					#{/list}
 			</div>
 			<div class="ui fluid form segment">
-				<div class="ui input field">
-					<input placeholder="Provide a comment here" name="content"
-						type="text">
-				</div>
-				<div class="ui form">
-					<button type="submit" class="ui green submit button">New
-						Comment</button>
-				</div>
+				<form action="@{BlogPost.addComment(post.id)}" method="POST">
+					<div class="ui fluid form segment">
+						<div class="field">
+							<textarea placeholder='Provide a comment here' name="content"
+								rows='2'></textarea>
+						</div>
+						<button class="ui green tiny button">New Comment</button>
+					</div>
+				</form>
 			</div>
 		</div>
-	</form>
 </section>

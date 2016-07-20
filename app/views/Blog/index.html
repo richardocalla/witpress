@@ -28,10 +28,11 @@
 			<div class="column">
 				<div class="ui fluid form segment">
 					<div class="field">
-						#{list items:reversePosts, as:'post'} ${post.title} #{/list}
-						<div class="ui form">
-							<button class="mini ui orange button">Delete</button>
-						</div>
+						#{list items:reversePosts, as:'post'} <a
+							href="@{BlogPost.index(post.id)}"> ${post.title} </a>
+						<div class="mini ui orange button">Delete</div>
+						<br>
+						<br> #{/list}
 					</div>
 				</div>
 			</div>

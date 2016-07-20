@@ -15,11 +15,6 @@ GET     /blog                                   Blog.index
 
 POST    /blog/addpost                           Blog.addPost
 
-# Blog Post
-GET     /blogpost                               BlogPost.index
-
-POST    /submitcomment                          BlogPost.submitComment
-
 # Ignore favicon requests
 GET     /favicon.ico                            404
 

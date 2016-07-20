@@ -16,13 +16,17 @@ public class Post extends Model {
 	public String content;
 	@Lob
 	public String title;
-	
-	@OneToMany (cascade=CascadeType.ALL)
+
+	@OneToMany(cascade = CascadeType.ALL)
 	public List<Comment> comments;
 
 	public Post(String content, String title) {
 		this.content = content;
 		this.title = title;
 	}
-	
+
+	public void submitComment(Comment comment) {
+		comments.add(comment);
+	}
+
 }

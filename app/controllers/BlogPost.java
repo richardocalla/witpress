@@ -7,18 +7,18 @@ import models.*;
 
 public class BlogPost extends Controller {
 
-	public static void index() {
-		render();
+	public static void index(Long postid) {
+		Post post = Post.findById(postid);
+		render(post);
 	}
 	
-	private static void addComment(String content) {
-		Comment input = new Comment(content);
-		input.save();
-	}
-
-	public static void submitComment(String content) {
-		addComment(content);
-		index();
+	public static void addComment(Long postid, String content) {
+		Post post = Post.findById(postid);
+		Comment comment = new Comment(content);
+		
+		post.submitComment(comment);
+		post.save();
+        index(postid);
 	}
 	
 }
