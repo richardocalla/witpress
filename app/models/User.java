@@ -16,7 +16,7 @@ public class User extends Model {
 	public String email;
 	public String password;
 
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	public List<Post> posts;
 
 	public User(String firstName, String lastName, String email, String password) {

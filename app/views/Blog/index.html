@@ -29,10 +29,9 @@
 				<div class="ui fluid form segment">
 					<div class="field">
 						#{list items:reversePosts, as:'post'} <a
-							href="@{BlogPost.index(post.id)}"> ${post.title} </a>
-						<div class="mini ui orange button">Delete</div>
-						<br>
-						<br> #{/list}
+							href="@{BlogPost.index(post.id)}"> ${post.title} </a> <a
+							href="@{Blog.deletePost(post.id)}" class="mini ui orange button">Delete</a>
+						<br> <br> #{/list}
 					</div>
 				</div>
 			</div>

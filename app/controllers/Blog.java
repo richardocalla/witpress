@@ -12,20 +12,32 @@ public class Blog extends Controller {
 		if (user == null) {
 			Accounts.signin();
 		}
-		List<Post> reversePosts = new ArrayList<Post> (user.posts);
+		List<Post> reversePosts = new ArrayList<Post>(user.posts);
 		Collections.reverse(reversePosts);
 		render(user, reversePosts);
 	}
 
 	public static void addPost(String content, String title) {
 		User user = Accounts.getCurrentUser();
-		
+
 		Post post = new Post(content, title);
 		user.submitPost(post);
 		user.save();
-		
-		Logger.info ("title:" + title + " content:" + content);
-	    index();
+
+		Logger.info("title:" + title + " content:" + content);
+		index();
+	}
+
+	public static void deletePost(Long postid) {
+		User user = Accounts.getCurrentUser();
+
+		Post post = Post.findById(postid);
+		user.posts.remove(post);
+
+		user.save();
+		post.delete();
+
+		index();
 	}
 
 }
