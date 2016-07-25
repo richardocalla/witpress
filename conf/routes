@@ -15,6 +15,9 @@ GET     /blog                                   Blog.index
 
 POST    /blog/addpost                           Blog.addPost
 
+# Public Blog Directory
+GET     /publicblogdirectory                    PublicBlogDirectory.index
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 

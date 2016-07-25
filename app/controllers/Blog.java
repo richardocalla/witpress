@@ -9,6 +9,9 @@ public class Blog extends Controller {
 
 	public static void index() {
 		User user = Accounts.getCurrentUser();
+		if (user == null) {
+			Accounts.index();
+		}
 		
 		List<Post> reversePosts = new ArrayList<Post>(user.posts);
 		Collections.reverse(reversePosts);

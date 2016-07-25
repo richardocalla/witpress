@@ -1,0 +1,24 @@
+ #{extends 'main.html' /} #{set title:"Blogs on WitPress" /}
+
+<nav class="ui inverted menu">
+	<a class="ui item" href="/">Sign Up</a> <a class="ui item"
+		href="/signin">Sign In</a> <a class="ui item" href="/blog">Blog</a> <a
+		class="ui active item" href="/publicblogdirectory">Public Blog
+		Directory</a> <a class="ui item" href="/signout">Sign Out</a>
+</nav>
+
+<div class="ui one column grid">
+	<div class="ten wide column">
+		<div class="ui segment">
+			<div class="ui segment">
+				#{list items:usersWithBlogs, as:'user'}
+				<h4>
+					<a href="@{PublicBlog.show(user.id)}"> ${user.firstName}
+						${user.lastName} Blog</a>
+				</h4>
+				<div class="ui divider"></div>
+				#{/list}
+			</div>
+		</div>
+	</div>
+</div>
